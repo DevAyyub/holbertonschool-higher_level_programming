@@ -9,7 +9,7 @@ def serialize_and_save_to_file(data, filename):
         json.dump(data, f)
 
 
-def load_and_deserialize_from_file(filename):
+def load_and_deserialize(filename):
     """ Loads a JSON file and deserializes it to a dictionary """
     with open(filename, 'r', encoding='utf-8') as f:
         return json.load(f)
