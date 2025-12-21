@@ -12,63 +12,75 @@
 >>> bg.integer_validator("my_int", 12)
 >>> bg.integer_validator("width", 89)
 
->>> # Test 3: Boolean value (Must use "age" as name to satisfy checker)
+>>> # Test 3: Boolean value (Must use "age" as name)
 >>> try:
 ...     bg.integer_validator("age", True)
 ... except Exception as e:
 ...     print("[{}] {}".format(e.__class__.__name__, e))
 [TypeError] age must be an integer
 
->>> # Test 4: List
+>>> # Test 4: Missing arguments (No args) - FIXED
+>>> bg.integer_validator()
+Traceback (most recent call last):
+...
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+>>> # Test 5: Missing arguments (One arg) - FIXED
+>>> bg.integer_validator("age")
+Traceback (most recent call last):
+...
+TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+>>> # Test 6: List
 >>> try:
 ...     bg.integer_validator("age", [3])
 ... except Exception as e:
 ...     print("[{}] {}".format(e.__class__.__name__, e))
 [TypeError] age must be an integer
 
->>> # Test 5: Tuple
+>>> # Test 7: Tuple
 >>> try:
 ...     bg.integer_validator("age", (4,))
 ... except Exception as e:
 ...     print("[{}] {}".format(e.__class__.__name__, e))
 [TypeError] age must be an integer
 
->>> # Test 6: Set
+>>> # Test 8: Set
 >>> try:
 ...     bg.integer_validator("age", {3, 4})
 ... except Exception as e:
 ...     print("[{}] {}".format(e.__class__.__name__, e))
 [TypeError] age must be an integer
 
->>> # Test 7: None
+>>> # Test 9: None
 >>> try:
 ...     bg.integer_validator("age", None)
 ... except Exception as e:
 ...     print("[{}] {}".format(e.__class__.__name__, e))
 [TypeError] age must be an integer
 
->>> # Test 8: Float
+>>> # Test 10: Float
 >>> try:
 ...     bg.integer_validator("age", 3.14)
 ... except Exception as e:
 ...     print("[{}] {}".format(e.__class__.__name__, e))
 [TypeError] age must be an integer
 
->>> # Test 9: String
+>>> # Test 11: String
 >>> try:
 ...     bg.integer_validator("name", "John")
 ... except Exception as e:
 ...     print("[{}] {}".format(e.__class__.__name__, e))
 [TypeError] name must be an integer
 
->>> # Test 10: Zero
+>>> # Test 12: Zero
 >>> try:
 ...     bg.integer_validator("age", 0)
 ... except Exception as e:
 ...     print("[{}] {}".format(e.__class__.__name__, e))
 [ValueError] age must be greater than 0
 
->>> # Test 11: Negative
+>>> # Test 13: Negative
 >>> try:
 ...     bg.integer_validator("age", -4)
 ... except Exception as e:
