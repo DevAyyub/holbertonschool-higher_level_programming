@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """
 Solves the N-queens puzzle.
-Determines all possible solutions for placing N non-attacking queens on an NxN chessboard.
+Determines all possible solutions for placing N non-attacking queens on an
+NxN chessboard.
 """
 import sys
 
@@ -10,7 +11,7 @@ def is_safe(placed_queens, row, col):
     """
     Checks if a queen placed at (row, col) is safe from attacks
     by previously placed queens.
-    
+
     Args:
         placed_queens (list): List of [r, c] pairs for existing queens.
         row (int): The current row.
@@ -20,7 +21,7 @@ def is_safe(placed_queens, row, col):
         # Check column conflict
         if c == col:
             return False
-        # Check diagonal conflict (absolute difference of rows == absolute difference of cols)
+        # Check diagonal conflict
         if abs(r - row) == abs(c - col):
             return False
     return True
@@ -29,7 +30,7 @@ def is_safe(placed_queens, row, col):
 def solve_nqueens(n, row, placed_queens):
     """
     Recursive backtracking function to find all solutions.
-    
+
     Args:
         n (int): The size of the board (N).
         row (int): The current row we are trying to fill.
