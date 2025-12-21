@@ -24,7 +24,7 @@ class Student:
         list must be retrieved.
         Otherwise, all attributes must be retrieved.
         """
-        if (type(attrs) == list and
-                all(type(ele) == str for ele in attrs)):
+        if (isinstance(attrs, list) and
+                all(isinstance(ele, str) for ele in attrs)):
             return {k: getattr(self, k) for k in attrs if hasattr(self, k)}
         return self.__dict__
